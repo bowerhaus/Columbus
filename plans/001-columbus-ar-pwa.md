@@ -1,5 +1,7 @@
 # Columbus PWA — Implementation Plan
 
+**Status: COMPLETE** — all steps implemented and desktop-tested. iPhone test pending (requires Tailscale HTTPS).
+
 ## Context
 
 Build a proof-of-concept PWA called **Columbus** at `~/Projects/Columbus`. The user points an iPhone in any direction; the app projects a great-circle bearing from their current coastal position across the ocean and identifies the first landfall, telling them what country/region it is, the bearing and distance, and travel times by sail, air and foot.
