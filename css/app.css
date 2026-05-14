@@ -1,0 +1,185 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1008;
+  font-family: 'Cinzel', Georgia, serif;
+  color: #f0d078;
+}
+
+/* Camera fills viewport exactly */
+#camera {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Canvas overlay on top of camera */
+#overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Desktop bearing slider */
+#slider-wrap {
+  position: fixed;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(26, 16, 8, 0.75);
+  border: 1px solid rgba(212, 165, 60, 0.4);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: rgba(240, 200, 100, 0.9);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+#slider-wrap label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+#bearing-slider {
+  width: 160px;
+  accent-color: rgba(212, 165, 60, 0.9);
+}
+
+#slider-value {
+  min-width: 38px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ── Splash screen ── */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 60%, #2a1a08 0%, #1a1008 70%, #0e0a04 100%);
+}
+
+.splash-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 0 24px;
+  text-align: center;
+  max-width: 340px;
+}
+
+.splash-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.splash-compass {
+  font-size: 48px;
+  color: rgba(212, 165, 60, 0.85);
+  text-shadow: 0 0 24px rgba(212, 165, 60, 0.4);
+  line-height: 1;
+}
+
+.splash-inner h1 {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  color: #f0d078;
+  text-shadow: 0 0 30px rgba(212, 165, 60, 0.3);
+  line-height: 1;
+}
+
+.splash-sub {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(240, 200, 100, 0.6);
+  letter-spacing: 1px;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+#error-msg {
+  font-size: 13px;
+  color: rgba(220, 100, 80, 0.9);
+  background: rgba(100, 30, 20, 0.4);
+  border: 1px solid rgba(200, 60, 40, 0.4);
+  border-radius: 6px;
+  padding: 10px 16px;
+  line-height: 1.5;
+  max-width: 280px;
+  text-align: center;
+}
+
+#begin-btn {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1008;
+  background: linear-gradient(135deg, #d4a53c 0%, #e8c060 50%, #c8901c 100%);
+  border: none;
+  border-radius: 6px;
+  padding: 14px 48px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(212, 165, 60, 0.35), 0 1px 3px rgba(0,0,0,0.5);
+  transition: opacity 0.15s, transform 0.12s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#begin-btn:active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+#begin-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+}
+
+.splash-note {
+  font-size: 11px;
+  color: rgba(240, 200, 100, 0.35);
+  letter-spacing: 0.5px;
+}
+
+/* Safe area insets for iPhone notch/Dynamic Island */
+@supports (padding: max(0px)) {
+  #overlay, #camera {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  #slider-wrap {
+    bottom: calc(160px + env(safe-area-inset-bottom));
+  }
+}
