@@ -1,0 +1,10 @@
+{
+  "name": "columbus",
+  "version": "0.1.0",
+  "description": "Point your iPhone at the horizon and find the first landfall",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "tailscale-setup": "tailscale serve --bg http://localhost:3000"
+  }
+}
